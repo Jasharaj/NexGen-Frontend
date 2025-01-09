@@ -142,7 +142,7 @@ const LoginPage = () => {
       
       // Small delay to ensure storage is set
       setTimeout(() => {
-        router.push(`/dashboard/admin`);
+        router.push(`/dashboard/${activeTab}`);
       }, 100);
 
     } catch (error: any) {
