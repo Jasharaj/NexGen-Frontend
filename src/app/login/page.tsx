@@ -141,7 +141,7 @@ const LoginPage = () => {
       toast.success("Login successful!");
       
       // Small delay to ensure storage is set
-      router.push(`/dashboard/${activeTab}`);
+      router.push(`/dashboard/sub-divisional-level`);
       // setTimeout(() => {
       //   router.push(`/dashboard/${activeTab}`);
       // }, 5000);
