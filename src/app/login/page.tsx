@@ -141,9 +141,10 @@ const LoginPage = () => {
       toast.success("Login successful!");
       
       // Small delay to ensure storage is set
-      setTimeout(() => {
-        router.push(`/dashboard/${activeTab}`);
-      }, 5000);
+      router.push(`/dashboard/${activeTab}`);
+      // setTimeout(() => {
+      //   router.push(`/dashboard/${activeTab}`);
+      // }, 5000);
 
     } catch (error: any) {
       console.error("Login error:", error);
