@@ -141,10 +141,9 @@ const LoginPage = () => {
       toast.success("Login successful!");
       
       // Small delay to ensure storage is set
-      router.push(`/dashboard/sub-divisional-level`);
-      // setTimeout(() => {
-      //   router.push(`/dashboard/${activeTab}`);
-      // }, 5000);
+      setTimeout(() => {
+        router.push(`/dashboard/admin`);
+      }, 100);
 
     } catch (error: any) {
       console.error("Login error:", error);
