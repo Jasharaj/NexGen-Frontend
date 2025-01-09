@@ -1,0 +1,1 @@
+export const BASE_URL = "https://nexgen-backend-45i5.onrender.com/api/v1";
