@@ -55,13 +55,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (token: string, userData: any) => {
     try {
       // First set all the necessary state and storage
-      setIsLoggedIn(true);
-      setToken(token);
-      setUser(userData);
+      await Promise.all([
+        new Promise(resolve => {
+          setIsLoggedIn(true);
+          setToken(token);
+          setUser(userData);
+          resolve(true);
+        }),
+        new Promise(resolve => {
+          localStorage.setItem('token', token);
+          localStorage.setItem('userData', JSON.stringify(userData));
+          resolve(true);
+        })
+      ]);
 
-      localStorage.setItem('token', token);
-      localStorage.setItem('userData', JSON.stringify(userData));
-      
       // Route based on user type and department
       if (userData.userType === 'admin') {
         const departmentRoutes: { [key: string]: string } = {
@@ -74,14 +81,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const targetRoute = departmentRoutes[userData.department] || '/dashboard/admin';
         console.log('Routing admin to:', targetRoute);
         
-        // Add a small delay to ensure state is properly set before navigation
-        setTimeout(() => {
-          router.push(targetRoute);
-        }, 100);
+        // Use replace instead of push to avoid history stack issues
+        await router.replace(targetRoute);
       } else {
-        setTimeout(() => {
-          router.push('/dashboard/user');
-        }, 100);
+        await router.replace('/dashboard/user');
       }
 
       toast.success('Login successful!');
