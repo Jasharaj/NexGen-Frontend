@@ -75,9 +75,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.log('Routing admin to:', targetRoute);
         
         // Add a small delay to ensure state is properly set before navigation
-        // setTimeout(() => {
-        //   router.push(targetRoute);
-        // }, 100);
+        setTimeout(() => {
+          router.push(targetRoute);
+        }, 100);
       } else {
         setTimeout(() => {
           router.push('/dashboard/user');
