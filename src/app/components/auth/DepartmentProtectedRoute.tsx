@@ -23,15 +23,15 @@ const DepartmentProtectedRoute: React.FC<DepartmentProtectedRouteProps> = ({
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
       const userType = localStorage.getItem('userType');
       
-      if (!isLoggedIn) {
-        router.push('/login');
-        return;
-      }
+      // if (!isLoggedIn) {
+      //   router.push('/login');
+      //   return;
+      // }
 
-      if (userType !== 'admin') {
-        router.push('/dashboard/user');
-        return;
-      }
+      // if (userType !== 'admin') {
+      //   router.push('/dashboard/user');
+      //   return;
+      // }
 
       const department = userData.department;
       
@@ -45,15 +45,15 @@ const DepartmentProtectedRoute: React.FC<DepartmentProtectedRouteProps> = ({
         };
 
         const correctPath = departmentRoutes[department];
-        if (correctPath) {
+  
           router.push(correctPath);
-        } else {
-          router.push('/login');
-        }
+      
+          
+       
       }
     };
 
-    // checkDepartmentAccess();
+    checkDepartmentAccess();
   }, []);
 
   return <>{children}</>;
