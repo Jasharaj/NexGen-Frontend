@@ -132,8 +132,10 @@ const LoginPage = () => {
         })
       });
 
-      // Store userType in localStorage (needed for future reference)
+      // Store auth data in localStorage
+      localStorage.setItem('token', data.token);
       localStorage.setItem('userType', activeTab);
+      localStorage.setItem('userData', JSON.stringify(userData));
 
       // Show success message
       toast.success("Login successful!");
