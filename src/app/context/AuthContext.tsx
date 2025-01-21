@@ -74,10 +74,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const targetRoute = departmentRoutes[userData.department] || '/dashboard/admin';
         console.log('Routing admin to:', targetRoute);
         
-        window.location.href = `https://nexgen-indiapost.vercel.app/${targetRoute}`;
-        console.log(`https://nexgen-indiapost.vercel.app/${targetRoute}`);
+        // Add a small delay to ensure state is properly set before navigation
+        // setTimeout(() => {
+        //   router.push(targetRoute);
+        // }, 100);
       } else {
-        window.location.href = `https://nexgen-indiapost.vercel.app/dashboard/user`;
+        setTimeout(() => {
+          router.push('/dashboard/user');
+        }, 100);
       }
 
       toast.success('Login successful!');
@@ -88,7 +92,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const logout = async () => {
-    try {77
+    try {
       // Call backend logout endpoint
       const response = await fetch(`${BASE_URL}/auth/admin/logout`, {
         method: 'POST',
