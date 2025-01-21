@@ -17,13 +17,13 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
       const storedToken = localStorage.getItem('token') || sessionStorage.getItem('token');
       const userType = localStorage.getItem('userType') || sessionStorage.getItem('userType');
 
-      // if (!storedToken || !userType) {
-      //   router.push('/login');
-      // }
+      if (!storedToken || !userType) {
+        router.push('/login');
+      }
     };
 
     checkAuth();
-  }, []);
+  }, [router, isLoggedIn, token]);
 
   // If we have a token, render the protected content
   if (token) {
