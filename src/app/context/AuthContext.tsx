@@ -54,11 +54,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (token: string, userData: any) => {
     try {
+      // First set all the necessary state and storage
       setIsLoggedIn(true);
       setToken(token);
       setUser(userData);
 
-      // Store user data
       localStorage.setItem('token', token);
       localStorage.setItem('userData', JSON.stringify(userData));
       
@@ -73,9 +73,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         const targetRoute = departmentRoutes[userData.department] || '/dashboard/admin';
         console.log('Routing admin to:', targetRoute);
-        router.push(targetRoute);
+        
+        // Add a small delay to ensure state is properly set before navigation
+        setTimeout(() => {
+          router.push(targetRoute);
+        }, 100);
       } else {
-        router.push('/dashboard/user');
+        setTimeout(() => {
+          router.push('/dashboard/user');
+        }, 100);
       }
 
       toast.success('Login successful!');
