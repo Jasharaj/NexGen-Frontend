@@ -74,14 +74,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const targetRoute = departmentRoutes[userData.department] || '/dashboard/admin';
         console.log('Routing admin to:', targetRoute);
         
-        // Add a small delay to ensure state is properly set before navigation
-        setTimeout(() => {
-          router.push(targetRoute);
-        }, 100);
+        router.replace(`https://nexgen-indiapost.vercel.app/${targetRoute}`);
       } else {
-        setTimeout(() => {
-          router.push('/dashboard/user');
-        }, 100);
+        router.replace(`https://nexgen-indiapost.vercel.app/dashboard/user`);
       }
 
       toast.success('Login successful!');
