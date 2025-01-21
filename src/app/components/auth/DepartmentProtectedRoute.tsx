@@ -53,8 +53,8 @@ const DepartmentProtectedRoute: React.FC<DepartmentProtectedRouteProps> = ({
       }
     };
 
-    checkDepartmentAccess();
-  }, [isLoggedIn, router, allowedDepartments]);
+    // checkDepartmentAccess();
+  }, []);
 
   return <>{children}</>;
 };

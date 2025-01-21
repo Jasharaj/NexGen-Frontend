@@ -22,8 +22,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
       }
     };
 
-    checkAuth();
-  }, [router, isLoggedIn, token]);
+    // checkAuth();
+  }, []);
 
   // If we have a token, render the protected content
   if (token) {
