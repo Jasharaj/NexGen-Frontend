@@ -109,7 +109,6 @@ const SubDivisionalAdmin = () => {
   };
 
   return (
-    <DepartmentProtectedRoute allowedDepartments={['SL']}>
       <DashboardLayout>
         <div className="p-6 max-w-7xl mx-auto">
           <div className="mb-8">
@@ -171,7 +170,6 @@ const SubDivisionalAdmin = () => {
           </motion.div>
         </div>
       </DashboardLayout>
-    </DepartmentProtectedRoute>
   );
 };
 
