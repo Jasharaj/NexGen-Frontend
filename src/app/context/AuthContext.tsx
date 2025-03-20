@@ -73,21 +73,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         const targetRoute = departmentRoutes[userData.department] || '/dashboard/admin';
         console.log('Routing admin to:', targetRoute);
-        console.log('Auth state before redirect:', { isLoggedIn: true, hasToken: !!token });
         
-        // Add a larger delay to ensure state is properly set before navigation
+        // Add a small delay to ensure state is properly set before navigation
         setTimeout(() => {
-          console.log('Executing admin redirect now');
           router.push(targetRoute);
-        }, 500);
+        }, 100);
       } else {
-        console.log('Routing user to dashboard/user');
-        console.log('Auth state before redirect:', { isLoggedIn: true, hasToken: !!token });
-        
         setTimeout(() => {
-          console.log('Executing user redirect now');
           router.push('/dashboard/user');
-        }, 500);
+        }, 100);
       }
 
       toast.success('Login successful!');

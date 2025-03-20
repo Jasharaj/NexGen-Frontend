@@ -140,11 +140,10 @@ const LoginPage = () => {
       // Show success message
       toast.success("Login successful!");
       
-      // Increase delay to ensure storage is set and token is properly processed
+      // Small delay to ensure storage is set
       setTimeout(() => {
-        console.log('Redirecting to dashboard after login');
         router.push(`/dashboard/${activeTab}`);
-      }, 500);
+      }, 100);
 
     } catch (error: any) {
       console.error("Login error:", error);
